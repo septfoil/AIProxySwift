@@ -467,7 +467,7 @@ extension OpenAIChatCompletionRequestBody {
         case jsonSchema(
             name: String,
             description: String? = nil,
-            schema: String? = nil,
+            schema: (any Encodable)? = nil,
             strict: Bool? = nil
         )
 
@@ -504,7 +504,9 @@ extension OpenAIChatCompletionRequestBody {
                 )
                 try nestedContainer.encode(name, forKey: .name)
                 try nestedContainer.encodeIfPresent(description, forKey: .description)
-                try nestedContainer.encodeIfPresent(schema, forKey: .schema)
+                if let schema = schema {
+                    try nestedContainer.encodeIfPresent(schema, forKey: .schema)
+                }
                 try nestedContainer.encodeIfPresent(strict, forKey: .strict)
             case .text:
                 try container.encode("text", forKey: .type)
