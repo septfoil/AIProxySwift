@@ -469,7 +469,7 @@ extension OpenAIChatCompletionRequestBody {
         case jsonSchema(
             name: String,
             description: String? = nil,
-            schema: [String: AIProxyJSONValue]? = nil,
+            schema: String? = nil,
             strict: Bool? = nil
         )
 
