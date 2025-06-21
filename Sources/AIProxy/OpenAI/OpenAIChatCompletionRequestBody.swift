@@ -33,8 +33,6 @@ public struct OpenAIChatCompletionRequestBody: Encodable {
     /// Whether to return log probabilities of the output tokens or not. If true, returns the log probabilities of each output token returned in the `content` of `message`.
     /// Defaults to false
     public let logprobs: Bool?
-    
-    public let maxTokens: Int?
 
     /// This field is deprecated by OpenAI, but is useful for other providers.
     /// Here is OpenAI's note:
